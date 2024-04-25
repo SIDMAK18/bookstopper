@@ -1,0 +1,48 @@
+<app-notfound
+  [visible]="!childbook.id"
+  notFoundMessage="Book Not Found"
+  resetLinkText="Back To Homepage">
+</app-notfound>
+<app-header></app-header>
+<div *ngIf="childbook.id" class="container">
+  <img [src]="childbook.imageUrl" [alt]="childbook.title"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{childbook.title}}
+      </span>
+      <span class="favorite {{childbook.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!-- <div class="rating">
+      <star-rating [stars]="childbook.stars" [size]="1.8" />
+    </div> -->
+
+    <div class="author">
+      <span >
+        {{childbook.author}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of childbook.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="des">
+      <span>
+        {{childbook.description}}
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{childbook.price}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

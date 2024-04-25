@@ -1,0 +1,47 @@
+<app-notfound
+  [visible]="!exambook.id"
+  notFoundMessage="Book Not Found"
+  resetLinkText="Back To Homepage">
+</app-notfound>
+<div *ngIf="exambook.id" class="container">
+  <img [src]="exambook.imageUrl" [alt]="exambook.title"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{exambook.title}}
+      </span>
+      <span class="favorite {{exambook.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!-- <div class="rating">
+      <star-rating [stars]="exambook.stars" [size]="1.8" />
+    </div> -->
+
+    <div class="author">
+      <span >
+        {{exambook.author}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of exambook.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="des">
+      <span>
+        {{exambook.description}}
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{exambook.price}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

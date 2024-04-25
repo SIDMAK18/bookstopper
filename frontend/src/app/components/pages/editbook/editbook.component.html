@@ -1,0 +1,48 @@
+
+<app-notfound
+  [visible]="!editbook.id"
+  notFoundMessage="Book Not Found"
+  resetLinkText="Back To Homepage">
+</app-notfound>
+<div *ngIf="editbook.id" class="container">
+  <img [src]="editbook.imageUrl" [alt]="editbook.title"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{editbook.title}}
+      </span>
+      <span class="favorite {{editbook.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!-- <div class="rating">
+      <star-rating [stars]="editbook.stars" [size]="1.8" />
+    </div> -->
+
+    <div class="author">
+      <span >
+        {{editbook.author}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of editbook.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="des">
+      <span>
+        {{editbook.description}}
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{editbook.price}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

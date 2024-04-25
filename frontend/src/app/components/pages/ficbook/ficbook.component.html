@@ -1,0 +1,47 @@
+<!-- <app-notfound
+  [visible]="!ficbook.id"
+  notFoundMessage="Book Not Found"
+  resetLinkText="Back To Homepage">
+</app-notfound> -->
+<div class="container">
+  <img [src]="ficbook.imageUrl" [alt]="ficbook.title"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{ficbook.title}}
+      </span>
+      <span class="favorite {{ficbook.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!-- <div class="rating">
+      <star-rating [stars]="ficbook.stars" [size]="1.8" />
+    </div> -->
+
+    <div class="author">
+      <span >
+        {{ficbook.author}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of ficbook.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="des">
+      <span>
+        {{ficbook.description}}
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{ficbook.price}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

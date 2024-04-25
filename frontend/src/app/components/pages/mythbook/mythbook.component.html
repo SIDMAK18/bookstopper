@@ -1,0 +1,47 @@
+<app-notfound
+  [visible]="!mythbook.id"
+  notFoundMessage="Book Not Found"
+  resetLinkText="Back To Homepage">
+</app-notfound>
+<div *ngIf="mythbook.id" class="container">
+  <img [src]="mythbook.imageUrl" [alt]="mythbook.title"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{mythbook.title}}
+      </span>
+      <span class="favorite {{mythbook.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!-- <div class="rating">
+      <star-rating [stars]="mythbook.stars" [size]="1.8" />
+    </div> -->
+
+    <div class="author">
+      <span >
+        {{mythbook.author}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of mythbook.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="des">
+      <span>
+        {{mythbook.description}}
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{mythbook.price}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

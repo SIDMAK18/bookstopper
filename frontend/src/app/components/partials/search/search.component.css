@@ -1,0 +1,37 @@
+div{
+    width: 400px;
+    display: flex;
+    margin-top: 10px;
+}
+
+input{
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #383838;
+    text-transform: capitalize;
+    background: none;
+    color: #383838;
+    outline: none;
+}
+
+button{
+    width: 20%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #5f3724;
+    color: #FFCC57;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+input::placeholder{
+    color: #383838;
+}

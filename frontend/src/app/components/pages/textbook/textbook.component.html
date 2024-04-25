@@ -1,0 +1,47 @@
+<app-notfound
+  [visible]="!textbook.id"
+  notFoundMessage="Book Not Found"
+  resetLinkText="Back To Homepage">
+</app-notfound>
+<div *ngIf="textbook.id" class="container">
+  <img [src]="textbook.imageUrl" [alt]="textbook.title"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{textbook.title}}
+      </span>
+      <span class="favorite {{textbook.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!-- <div class="rating">
+      <star-rating [stars]="textbook.stars" [size]="1.8" />
+    </div> -->
+
+    <div class="author">
+      <span >
+        {{textbook.author}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of textbook.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="des">
+      <span>
+        {{textbook.description}}
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{textbook.price}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>

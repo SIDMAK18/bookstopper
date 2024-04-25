@@ -1,0 +1,114 @@
+<app-header></app-header>
+<app-notfound
+ [visible]="(!ficbooks || !ficbooks.length) && (!editorsbooks || !editorsbooks.length) && (!textbooks || !textbooks.length) && (!childrenbooks || !childrenbooks.length) && (!exambooks || !exambooks.length) && (!mythologicalbooks || !mythologicalbooks.length)"
+resetLinkText="Reset Search">
+</app-notfound>
+<section class="product" *ngIf="ficbooks && ficbooks.length">
+    <h2 class="product-category">Fiction Books</h2>
+    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
+    <div class="product-container">
+<div class="product-card" *ngFor="let ficbook of ficbooks">
+    <div class="product-image">
+        <span class="discount-tag">17 % off</span>
+        <a [routerLink]="['/fiction',ficbook.id]"><img [src]="ficbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">{{ficbook.title}}</h2>
+        <p class="product-short-des">{{ficbook.description}}</p>
+        <span class="price">Rs 476</span><span class="actual-price">{{ficbook.price}}</span>
+    </div>
+</div>
+</div>
+</section>
+<section class="product" *ngIf="textbooks && textbooks.length">
+    <h2 class="product-category">Text Books</h2>
+    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
+    <div class="product-container">
+<div class="product-card" *ngFor="let textbook of textbooks">
+    <div class="product-image">
+        <span class="discount-tag">17 % off</span>
+        <a [routerLink]="['/text',textbook.id]"><img [src]="textbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">{{textbook.title}}</h2>
+        <p class="product-short-des">{{textbook.description}}</p>
+        <span class="price">Rs 476</span><span class="actual-price">{{textbook.price}}</span>
+    </div>
+</div>
+</div>
+</section>
+<section class="product" *ngIf="childrenbooks && childrenbooks.length">
+    <h2 class="product-category">Children Books</h2>
+    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
+    <div class="product-container">
+<div class="product-card" *ngFor="let childbook of childrenbooks">
+    <div class="product-image">
+        <span class="discount-tag">17 % off</span>
+        <a [routerLink]="['/child',childbook.id]"><img [src]="childbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">{{childbook.title}}</h2>
+        <p class="product-short-des">{{childbook.description}}</p>
+        <span class="price">Rs 476</span><span class="actual-price">{{childbook.price}}</span>
+    </div>
+</div>
+</div>
+</section>
+<section class="product" *ngIf="editorsbooks && editorsbooks.length">
+    <h2 class="product-category">Editor's Books</h2>
+    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="assests/arrow.png" alt=""></button>
+    <div class="product-container">
+<div class="product-card" *ngFor="let editorbook of editorsbooks">
+    <div class="product-image">
+        <span class="discount-tag">17 % off</span>
+        <a [routerLink]="['/edit',editorbook.id]"><img [src]="editorbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">{{editorbook.title}}</h2>
+        <p class="product-short-des">{{editorbook.description}}</p>
+        <span class="price">Rs 476</span><span class="actual-price">{{editorbook.price}}</span>
+    </div>
+</div>
+</div>
+</section>
+<section class="product" *ngIf="exambooks && exambooks.length">
+    <h2 class="product-category">Exam Books</h2>
+    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
+    <div class="product-container">
+<div class="product-card" *ngFor="let exambook of exambooks">
+    <div class="product-image">
+        <span class="discount-tag">17 % off</span>
+        <a [routerLink]="['/exam',exambook.id]"><img [src]="exambook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">{{exambook.title}}</h2>
+        <p class="product-short-des">{{exambook.description}}</p>
+        <span class="price">Rs 476</span><span class="actual-price">{{exambook.price}}</span>
+    </div>
+</div>
+</div>
+</section>
+<section class="product" *ngIf="mythologicalbooks && mythologicalbooks.length">
+    <h2 class="product-category">Mythological Books</h2>
+    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
+    <div class="product-container">
+<div class="product-card" *ngFor="let mythbook of mythologicalbooks">
+    <div class="product-image">
+        <span class="discount-tag">17 % off</span>
+        <a [routerLink]="['/mythological',mythbook.id]"><img [src]="mythbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">{{mythbook.title}}</h2>
+        <p class="product-short-des">{{mythbook.description}}</p>
+        <span class="price">Rs 476</span><span class="actual-price">{{mythbook.price}}</span>
+    </div>
+</div>
+</div>
+</section>
+
