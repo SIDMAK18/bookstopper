@@ -1,4 +1,4 @@
-<app-title title="Cart Page" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-title title="Cart Page" style="display: flex;align-items: center;justify-content: center;margin:1.5rem 0 0 4.5rem;"></app-title>
 <app-notfound [visible]="!cart || !cart.items.length" notFoundMessage="Cart Page Is Empty!" resetLinkText="Go To Homepage">
 </app-notfound>
 <div *ngIf="cart && cart.items.length" class="container" >

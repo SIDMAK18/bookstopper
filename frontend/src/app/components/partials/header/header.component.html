@@ -1,23 +1,24 @@
 
 <header>
   <div class="container">
-    <a routerLink="/" class="logo">BookStopper!</a>
+    <a routerLink="/" class="logo"><img src="assets/Screenshot 2024-03-26 110858-fotor-20240326151253-modified.png" height="30px"></a><span class="line"></span>
+    <app-search></app-search>
     <nav>
       <ul>
-        <li *ngIf="!isAuth">
-          <a routerLink="/login">Login</a>
+        <li *ngIf="!isAuth" style="background-color: #5f3724;border-radius: 10px;margin-top: 8px;" >
+          <a routerLink="/login" style="color: #FFCC57; text-decoration: none;">Login</a>
         </li>
-        <li  class="menu-container">
-          <a routerLink="/dashboard">{{user.name}}</a>
+        <li  class="menu-container" >
+          <a routerLink="/dashboard" style="text-decoration: none; color: #5f3724;padding-top: 15px;">{{user.name}}</a>
           <div class="menu">
-            <a routerLink="/profile">Profile</a>
-            <a routerLink="/orders">Orders</a>
-            <a (click)="logout()">Logout</a>
+            <a routerLink="/profile" style="background-color: #FFCC57;color: #5f3724;text-decoration: none;">Profile</a>
+            <a routerLink="/orders" style="background-color: #FFCC57;color: #5f3724;text-decoration: none;">Orders</a>
+            <a (click)="logout()" style="background-color: #FFCC57;color: #5f3724;">Logout</a>
           </div>
         </li>
-        <li>
-          <a routerLink="/cart-page">
-            Cart <span *ngIf="cartquantity">{{cartquantity}}</span>
+        <li style="background-color: #5f3724;border-radius: 10px;margin-top: 8px;padding-left: 5px;padding-right: 5px;">
+          <a routerLink="/cart-page" style="color: #FFCC57; text-decoration: none;">
+            Cart <span *ngIf="cartquantity" style="background-color: #FFCC57;color: #5f3724;">  {{cartquantity}}</span>
           </a>
         </li>
       </ul>

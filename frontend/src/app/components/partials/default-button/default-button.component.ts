@@ -13,9 +13,9 @@ type:'submit'|'button'='submit';
 @Input()
 text:string='Submit';
 @Input()
-bgColor='#e72929';
+bgColor='#7B3F00';
 @Input()
-color='white';
+color='#FFCC57';
 @Input()
 fontSizeRem=1.3;
 @Input()

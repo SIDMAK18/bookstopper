@@ -119,6 +119,9 @@
             ],
             "scripts": ["src/assets/js/heaer.js","src/assets/js/arrow.js"]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

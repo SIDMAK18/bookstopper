@@ -3,11 +3,14 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: 3rem;
-    }
-    
-    .details{
-      width: 28rem;
+    margin-top: 1rem;
+  }
+  
+  .details{
+    width: 28rem;
+    border: 1px solid black;
+    padding: 40px 50px;
+    border-radius: 20px;
     }
     
     form{

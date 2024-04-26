@@ -1,6 +1,6 @@
 <div class="container">
     <div class="content">
-      <app-title title="Order Form" fontSize="1.6rem"></app-title>
+      <app-title title="Order Form" style="display: flex;align-items: center;justify-content: center;padding-bottom: 30px;padding-top: 20px;font-size:1.6rem;"></app-title>
       <form [formGroup]="checkoutForm">
         <text-input [control]="fc['name']" label="Name"></text-input>
         <text-input [control]="fc['address']" label="Address"></text-input>

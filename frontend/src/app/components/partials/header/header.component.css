@@ -2,16 +2,13 @@ header{
     position: relative;
     background: white;
     padding: 0;
-    border-bottom: 1px solid #e72929;
+    background-color: #FFCC57;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   
-  a{
-    color: #af1313;
-  }
   
   a:hover{
-    background:#e72929;
-    color: white;
     cursor: pointer;
   }
   
@@ -22,24 +19,25 @@ header{
   }
   
   a.logo{
-    font-weight: bold;
-    padding: 1rem;
+    padding: 10px;
+    border-right: 1px solid black;
+    margin-bottom: 5px;
   }
-  
+
   ul{
     display: flex;
     list-style-type: none;
     margin: 0;
   }
-  
   ul a{
-    padding: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     display: inline-block;
   }
   
   a span{
-    background: #ff4d4d;
-    color: white;
     padding: 0.1rem 0.45rem;
     border-radius: 100rem;
     font-size:0.9rem;
@@ -47,20 +45,22 @@ header{
   
   .menu-container{
     position: relative;
+    /* width: 0px; */
   }
   
   .menu{
     position:absolute;
     z-index:1;
-    background:whitesmoke;
     display: none;
+    
   }
   
   .menu-container:hover .menu{
     display: block;
+    border-radius: 20px;
   }
   
   .menu a{
     width: 100%;
-    min-width:8rem;
+    min-width:0rem;
   }
