@@ -1,4 +1,6 @@
-const BASE_URL='http://localhost:5000';
+import { environment } from "../../../environments/environment";
+
+const BASE_URL=environment.production? '' :'http://localhost:5000';
 export const CHILD_DATA_URL = BASE_URL+'/api/childdata';
 export const CHILD_DATA_SEARCH_URL = CHILD_DATA_URL+'/search/';
 export const CHILD_DATA_ID_URL = CHILD_DATA_URL+'/';
