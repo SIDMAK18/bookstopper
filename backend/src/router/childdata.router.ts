@@ -16,7 +16,7 @@ router.get("/seed", expressAsyncHandler(async (req,res)=>{
     res.send(childBooks);
 }
 ));
-router.get("/",expressAsyncHandler(async (req, res) => {
+router.get("",expressAsyncHandler(async (req, res) => {
     const childBooks = await childModel.find();
     res.send(childBooks);
 })

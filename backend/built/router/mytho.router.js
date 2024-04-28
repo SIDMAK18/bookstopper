@@ -65,7 +65,7 @@ router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { r
         }
     });
 }); }));
-router.get("/", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get("", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var mythBooks;
     return __generator(this, function (_a) {
         switch (_a.label) {
