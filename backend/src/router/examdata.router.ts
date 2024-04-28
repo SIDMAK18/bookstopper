@@ -17,20 +17,21 @@ router.get("/seed", expressAsyncHandler(async (req,res)=>{
     res.send(examBooks);
 }
 ));
-router.get("/", (req, res) => {
+router.get("/",expressAsyncHandler(async (req, res) => {
+    const examBooks = await examModel.find();
     res.send(examBooks);
-});
+})
+)
 
-router.get("/search/:searchTerm", (req, res) => {
-    const searchTerm = req.params.searchTerm;
-    const exambookdata =examBooks.filter(book => book.title.toLowerCase().includes(searchTerm.toLowerCase()));
+router.get("/search/:searchTerm",expressAsyncHandler(async (req, res) => {
+    const searchRegex=new RegExp(req.params.searchTerm,'i');
+    const exambookdata=await examModel.find({title:{$regex:searchRegex}})
     res.send(exambookdata);
-})
+}))
 
-router.get("/:exambookId", (req, res) => {
-    const exambookId = req.params.exambookId;
-    const exambook =examBooks.find(exambook => exambook.id == exambookId);
-    res.send(exambook);
-})
+router.get("/:exambookId",expressAsyncHandler(async(req, res) => {
+    const exambookId=await examModel.findById(req.params.exambookId);
+    res.send(exambookId);
+}))
 
 export default router;

@@ -65,17 +65,42 @@ router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { r
         }
     });
 }); }));
-router.get("/", function (req, res) {
-    res.send(mythologydata_1.mythoBooks);
-});
-router.get("/search/:searchTerm", function (req, res) {
-    var searchTerm = req.params.searchTerm;
-    var mythologydata = mythologydata_1.mythoBooks.filter(function (book) { return book.title.toLowerCase().includes(searchTerm.toLowerCase()); });
-    res.send(mythologydata);
-});
-router.get("/:mythbookId", function (req, res) {
-    var mythbookId = req.params.mythbookId;
-    var mythbook = mythologydata_1.mythoBooks.find(function (mythbook) { return mythbook.id == mythbookId; });
-    res.send(mythbook);
-});
+router.get("/", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var mythBooks;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, mythdata_model_1.mythModel.find()];
+            case 1:
+                mythBooks = _a.sent();
+                res.send(mythBooks);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/search/:searchTerm", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var searchRegex, mythbookdata;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                searchRegex = new RegExp(req.params.searchTerm, 'i');
+                return [4 /*yield*/, mythdata_model_1.mythModel.find({ title: { $regex: searchRegex } })];
+            case 1:
+                mythbookdata = _a.sent();
+                res.send(mythbookdata);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/:mythbookId", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var mythbookId;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, mythdata_model_1.mythModel.findById(req.params.mythbookId)];
+            case 1:
+                mythbookId = _a.sent();
+                res.send(mythbookId);
+                return [2 /*return*/];
+        }
+    });
+}); }));
 exports.default = router;

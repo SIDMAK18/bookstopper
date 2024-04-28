@@ -65,17 +65,42 @@ router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { r
         }
     });
 }); }));
-router.get("/", function (req, res) {
-    res.send(editordata_1.editBooks);
-});
-router.get("/search/:searchTerm", function (req, res) {
-    var searchTerm = req.params.searchTerm;
-    var editordata = editordata_1.editBooks.filter(function (book) { return book.title.toLowerCase().includes(searchTerm.toLowerCase()); });
-    res.send(editordata);
-});
-router.get("/:editbookId", function (req, res) {
-    var editbookId = req.params.editbookId;
-    var editbook = editordata_1.editBooks.find(function (editbook) { return editbook.id == editbookId; });
-    res.send(editbook);
-});
+router.get("/", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var editBooks;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, editdata_model_1.editModel.find()];
+            case 1:
+                editBooks = _a.sent();
+                res.send(editBooks);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/search/:searchTerm", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var searchRegex, editbookdata;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                searchRegex = new RegExp(req.params.searchTerm, 'i');
+                return [4 /*yield*/, editdata_model_1.editModel.find({ title: { $regex: searchRegex } })];
+            case 1:
+                editbookdata = _a.sent();
+                res.send(editbookdata);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/:editbookId", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var editbookId;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, editdata_model_1.editModel.findById(req.params.editbookId)];
+            case 1:
+                editbookId = _a.sent();
+                res.send(editbookId);
+                return [2 /*return*/];
+        }
+    });
+}); }));
 exports.default = router;

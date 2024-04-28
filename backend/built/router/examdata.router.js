@@ -65,17 +65,42 @@ router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { r
         }
     });
 }); }));
-router.get("/", function (req, res) {
-    res.send(exambookdata_1.examBooks);
-});
-router.get("/search/:searchTerm", function (req, res) {
-    var searchTerm = req.params.searchTerm;
-    var exambookdata = exambookdata_1.examBooks.filter(function (book) { return book.title.toLowerCase().includes(searchTerm.toLowerCase()); });
-    res.send(exambookdata);
-});
-router.get("/:exambookId", function (req, res) {
-    var exambookId = req.params.exambookId;
-    var exambook = exambookdata_1.examBooks.find(function (exambook) { return exambook.id == exambookId; });
-    res.send(exambook);
-});
+router.get("/", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var examBooks;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, examdata_model_1.examModel.find()];
+            case 1:
+                examBooks = _a.sent();
+                res.send(examBooks);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/search/:searchTerm", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var searchRegex, exambookdata;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                searchRegex = new RegExp(req.params.searchTerm, 'i');
+                return [4 /*yield*/, examdata_model_1.examModel.find({ title: { $regex: searchRegex } })];
+            case 1:
+                exambookdata = _a.sent();
+                res.send(exambookdata);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/:exambookId", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var exambookId;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, examdata_model_1.examModel.findById(req.params.exambookId)];
+            case 1:
+                exambookId = _a.sent();
+                res.send(exambookId);
+                return [2 /*return*/];
+        }
+    });
+}); }));
 exports.default = router;

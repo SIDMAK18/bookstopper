@@ -17,20 +17,21 @@ router.get("/seed", expressAsyncHandler(async (req,res)=>{
     res.send(ficBooks);
 }
 ));
-router.get("/", (req, res) => {
+router.get("/",expressAsyncHandler(async (req, res) => {
+    const ficBooks = await ficModel.find();
     res.send(ficBooks);
-});
-
-router.get("/search/:searchTerm", (req, res) => {
-    const searchTerm = req.params.searchTerm;
-    const ficdata =ficBooks.filter(book => book.title.toLowerCase().includes(searchTerm.toLowerCase()));
-    res.send(ficdata);
 })
+)
 
-router.get("/:ficbookId", (req, res) => {
-    const ficbookId = req.params.ficbookId;
-    const ficbook =ficBooks.find(ficbook => ficbook.id == ficbookId);
-    res.send(ficbook);
-})
+router.get("/search/:searchTerm",expressAsyncHandler(async (req, res) => {
+    const searchRegex=new RegExp(req.params.searchTerm,'i');
+    const ficbookdata=await ficModel.find({title:{$regex:searchRegex}})
+    res.send(ficbookdata);
+}))
+
+router.get("/:ficbookId",expressAsyncHandler(async(req, res) => {
+    const ficbookId=await ficModel.findById(req.params.ficbookId);
+    res.send(ficbookId);
+}))
 
 export default router;

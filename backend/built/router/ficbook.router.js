@@ -65,17 +65,42 @@ router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { r
         }
     });
 }); }));
-router.get("/", function (req, res) {
-    res.send(ficdata_1.ficBooks);
-});
-router.get("/search/:searchTerm", function (req, res) {
-    var searchTerm = req.params.searchTerm;
-    var ficdata = ficdata_1.ficBooks.filter(function (book) { return book.title.toLowerCase().includes(searchTerm.toLowerCase()); });
-    res.send(ficdata);
-});
-router.get("/:ficbookId", function (req, res) {
-    var ficbookId = req.params.ficbookId;
-    var ficbook = ficdata_1.ficBooks.find(function (ficbook) { return ficbook.id == ficbookId; });
-    res.send(ficbook);
-});
+router.get("/", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var ficBooks;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, ficdata_model_1.ficModel.find()];
+            case 1:
+                ficBooks = _a.sent();
+                res.send(ficBooks);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/search/:searchTerm", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var searchRegex, ficbookdata;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                searchRegex = new RegExp(req.params.searchTerm, 'i');
+                return [4 /*yield*/, ficdata_model_1.ficModel.find({ title: { $regex: searchRegex } })];
+            case 1:
+                ficbookdata = _a.sent();
+                res.send(ficbookdata);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/:ficbookId", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var ficbookId;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, ficdata_model_1.ficModel.findById(req.params.ficbookId)];
+            case 1:
+                ficbookId = _a.sent();
+                res.send(ficbookId);
+                return [2 /*return*/];
+        }
+    });
+}); }));
 exports.default = router;

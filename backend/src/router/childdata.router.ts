@@ -16,20 +16,21 @@ router.get("/seed", expressAsyncHandler(async (req,res)=>{
     res.send(childBooks);
 }
 ));
-router.get("/", (req, res) => {
+router.get("/",expressAsyncHandler(async (req, res) => {
+    const childBooks = await childModel.find();
     res.send(childBooks);
-});
-
-router.get("/search/:searchTerm", (req, res) => {
-    const searchTerm = req.params.searchTerm;
-    const childdata =childBooks.filter(book => book.title.toLowerCase().includes(searchTerm.toLowerCase()));
-    res.send(childdata);
 })
+)
 
-router.get("/:childbookId", (req, res) => {
-    const childbookId = req.params.childbookId;
-    const childbook =childBooks.find(childbook => childbook.id == childbookId);
-    res.send(childbook);
-})
+router.get("/search/:searchTerm",expressAsyncHandler(async (req, res) => {
+    const searchRegex=new RegExp(req.params.searchTerm,'i');
+    const childbookdata=await childModel.find({title:{$regex:searchRegex}})
+    res.send(childbookdata);
+}))
+
+router.get("/:childbookId",expressAsyncHandler(async(req, res) => {
+    const childbookId=await childModel.findById(req.params.childbookId);
+    res.send(childbookId);
+}))
 
 export default router;

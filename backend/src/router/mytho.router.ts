@@ -18,20 +18,21 @@ router.get("/seed", expressAsyncHandler(async (req,res)=>{
     res.send(mythoBooks);
 }
 ));
-router.get("/", (req, res) => {
-    res.send(mythoBooks);
-});
-
-router.get("/search/:searchTerm", (req, res) => {
-    const searchTerm = req.params.searchTerm;
-    const mythologydata =mythoBooks.filter(book => book.title.toLowerCase().includes(searchTerm.toLowerCase()));
-    res.send(mythologydata);
+router.get("/",expressAsyncHandler(async (req, res) => {
+    const mythBooks = await mythModel.find();
+    res.send(mythBooks);
 })
+)
 
-router.get("/:mythbookId", (req, res) => {
-    const mythbookId = req.params.mythbookId;
-    const mythbook =mythoBooks.find(mythbook => mythbook.id == mythbookId);
-    res.send(mythbook);
-})
+router.get("/search/:searchTerm",expressAsyncHandler(async (req, res) => {
+    const searchRegex=new RegExp(req.params.searchTerm,'i');
+    const mythbookdata=await mythModel.find({title:{$regex:searchRegex}})
+    res.send(mythbookdata);
+}))
+
+router.get("/:mythbookId", expressAsyncHandler(async (req, res) => {
+    const mythbookId=await mythModel.findById(req.params.mythbookId);
+    res.send(mythbookId);
+}))
 
 export default router;

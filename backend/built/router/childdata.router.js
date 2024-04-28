@@ -65,17 +65,42 @@ router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { r
         }
     });
 }); }));
-router.get("/", function (req, res) {
-    res.send(childdata_1.childBooks);
-});
-router.get("/search/:searchTerm", function (req, res) {
-    var searchTerm = req.params.searchTerm;
-    var childdata = childdata_1.childBooks.filter(function (book) { return book.title.toLowerCase().includes(searchTerm.toLowerCase()); });
-    res.send(childdata);
-});
-router.get("/:childbookId", function (req, res) {
-    var childbookId = req.params.childbookId;
-    var childbook = childdata_1.childBooks.find(function (childbook) { return childbook.id == childbookId; });
-    res.send(childbook);
-});
+router.get("/", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var childBooks;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, childdata_model_1.childModel.find()];
+            case 1:
+                childBooks = _a.sent();
+                res.send(childBooks);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/search/:searchTerm", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var searchRegex, childbookdata;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                searchRegex = new RegExp(req.params.searchTerm, 'i');
+                return [4 /*yield*/, childdata_model_1.childModel.find({ title: { $regex: searchRegex } })];
+            case 1:
+                childbookdata = _a.sent();
+                res.send(childbookdata);
+                return [2 /*return*/];
+        }
+    });
+}); }));
+router.get("/:childbookId", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var childbookId;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, childdata_model_1.childModel.findById(req.params.childbookId)];
+            case 1:
+                childbookId = _a.sent();
+                res.send(childbookId);
+                return [2 /*return*/];
+        }
+    });
+}); }));
 exports.default = router;
