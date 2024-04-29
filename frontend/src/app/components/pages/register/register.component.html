@@ -1,6 +1,12 @@
+
+<div class="back">
+  <img src="assets/paper-frame-book-stationery-background-vector-illustration_554445-1274-ezgif.com-avif-to-jpg-converter.jpg" style="width: 100%;height: 100vh;object-fit: cover;" alt="">
 <div class="container">
+  <div class="img">
+    <img src="assets/d382add981c99c7ba0332f2260b89cfd.webp" alt="">
+    </div>
     <div class="details">
-      <app-title title="Register" style="display: flex;align-items: center;justify-content: center; padding-bottom: 20px;"></app-title>
+      <app-title title="Register" style="color: #0d0d0d;font-weight: 600;font-size: 1.5em;margin-bottom:20px;text-transform: uppercase;border-bottom: 4px solid #0d0d0d;display: inline-block;letter-spacing: 1px;"></app-title>
       <form [formGroup]="registerForm" (ngSubmit)="submit()">
         <text-input
         [control]="fc['name']"
@@ -13,40 +19,32 @@
       [showErrorsWhen]="isSubmitted"
       label="Email"
       type="email">
-    `</text-input>
-  
-  
+    </text-input>
     <text-input
     [control]="fc['password']"
     [showErrorsWhen]="isSubmitted"
     label="Password"
     type="password">
   `</text-input>
-  
   <text-input
   [control]="fc['confirmPassword']"
   [showErrorsWhen]="isSubmitted"
   label="Confirm Password"
   type="password">
   `</text-input>
-  
   <text-input
   [control]="fc['address']"
   [showErrorsWhen]="isSubmitted"
   label="Address">
   `</text-input>
-  
-  
   <default-button text="Register"></default-button>
-  
   <div class="login">
     Already a user? &nbsp;
     <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}">
       Login Here
     </a>
   </div>
-  
-  
       </form>
     </div>
-  </div>
+    </div>
+    </div>

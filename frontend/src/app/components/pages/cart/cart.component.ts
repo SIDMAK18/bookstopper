@@ -26,7 +26,7 @@ export class CartComponent {
 
   changeQuantity(cartItem:CartItem,quantityinstring:string){
     const quantity = parseInt(quantityinstring);
-    this.cartService.changeQuantity(cartItem.book.id,quantity);
+    this.cartService.changeQuantity(cartItem.book.title,quantity);
   }
 }
 import { NotfoundComponent } from '../../partials/notfound/notfound.component';

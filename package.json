@@ -1,10 +1,12 @@
 {
-    "name":"bookstopper",
+    "name": "bookstopper",
     "version": "1.0.0",
     "scripts": {
-        "start":"cd backend/built && node server.js",
-        "prebuild":"cd backend && npm run build",
-        "build":"cd frontend  && npm run build"
+        "start": "cd backend/built && node server.js",
+        "prebuild": "cd backend && npm run build",
+        "build": "cd frontend  && npm run build"
+    },
+    "dependencies": {
+        "ionicons": "^7.3.1"
     }
-
 }

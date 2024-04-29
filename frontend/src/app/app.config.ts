@@ -6,8 +6,8 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
-// import { authInterceptor } from './auth.interceptor';
-
+import { UserService } from './services/user.service';
+import { NgImageSliderComponent } from 'ng-image-slider';
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(),provideHttpClient(),ReactiveFormsModule,provideToastr({timeOut:3000,positionClass:'toast-top-right',newestOnTop:false}),provideAnimations()]
+  providers: [UserService,provideRouter(routes),NgImageSliderComponent ,provideClientHydration(),provideHttpClient(),ReactiveFormsModule,provideToastr({timeOut:3000,positionClass:'toast-bottom-right',newestOnTop:false}),provideAnimations()]
 };

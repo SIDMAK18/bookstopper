@@ -9,12 +9,13 @@ import { InputValidationComponent } from '../../partials/input-validation/input-
 import { TextInputComponent } from '../../partials/text-input/text-input.component';
 import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from "../../partials/header/header.component";
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [TitleComponent,ReactiveFormsModule,NgIf,InputContainerComponent,InputValidationComponent,TextInputComponent,DefaultButtonComponent,RouterModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    standalone: true,
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    imports: [TitleComponent, ReactiveFormsModule, NgIf, InputContainerComponent, InputValidationComponent, TextInputComponent, DefaultButtonComponent, RouterModule, HeaderComponent]
 })
 export class LoginComponent {
   loginForm!:FormGroup;

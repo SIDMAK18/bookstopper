@@ -7,11 +7,14 @@ input {
     background-color: white;
     font-size: 1.1rem;
     outline: none;
+    padding-right: 10rem;
   }
   
   input::placeholder{
     color: #dfdfdf;
     font-size: 0.95rem;
+    margin-left: -9rem;
+    text-align: left;
   }
   
   input:focus{

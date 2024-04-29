@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChildrenBook } from '../../../shared/models/childbook';
 import { ChildrenService } from '../../../services/children.service';
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-childbooks',
   standalone: true,
-  imports: [RouterModule,NgFor,NgIf,HeaderComponent,NotfoundComponent,HttpClientModule],
+  imports: [RouterModule,CommonModule,NgFor,NgIf,HeaderComponent,NotfoundComponent,HttpClientModule],
   templateUrl: './childbooks.component.html',
   styleUrl: './childbooks.component.css'
 })

@@ -1,6 +1,12 @@
+
+<div class="back">
+  <img src="assets/paper-frame-book-stationery-background-vector-illustration_554445-1274-ezgif.com-avif-to-jpg-converter.jpg" style="width: 100%;height: 100vh;object-fit: cover;" alt="">
 <div class="container">
+  <div class="img">
+    <img src="assets/hand-drawn-world-book-day_23-2148491858.jpg" alt="">
+  </div>
     <div class="details">
-        <app-title title="Login" style="display: flex; align-items: center; justify-content: center; padding-bottom:20px;"></app-title>
+        <app-title title="Login" style="color: #0d0d0d;font-weight: 600;font-size: 1.5em;margin-bottom:20px;text-transform: uppercase;border-bottom: 4px solid #0d0d0d;display: inline-block;letter-spacing: 1px;"></app-title>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <text-input [control]="fc['email']" [showErrorsWhen]="isSubmitted" type="email" label="Email"></text-input>
         <text-input [control]="fc['password']" [showErrorsWhen]="isSubmitted" type="password" label="Password"></text-input>
@@ -13,4 +19,5 @@
           </div>
     </form>
     </div>
+</div>
 </div>

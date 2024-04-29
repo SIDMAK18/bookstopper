@@ -4,45 +4,42 @@
   notFoundMessage="Book Not Found"
   resetLinkText="Back To Homepage">
 </app-notfound>
-<div *ngIf="editbook.id" class="container">
-  <img [src]="editbook.imageUrl" [alt]="editbook.title"/>
-
-  <div class="details">
-    <div class="header">
-      <span class="name">
-        {{editbook.title}}
-      </span>
-      <span class="favorite {{editbook.favorite? '': 'not'}}">❤</span>
-    </div>
-    <!-- <div class="rating">
-      <star-rating [stars]="editbook.stars" [size]="1.8" />
-    </div> -->
-
-    <div class="author">
-      <span >
-        {{editbook.author}}
-      </span>
-    </div>
-
-    <div class="tags">
-      <a *ngFor="let tag of editbook.tags" routerLink="/tag/{{tag}}">
-        {{tag}}
-      </a>
-    </div>
-
-    <div class="des">
-      <span>
-        {{editbook.description}}
-      </span>
-    </div>
-
-    <div class="price">
-      <span>
-        {{editbook.price}}
-      </span>
-    </div>
-
-    <button (click)="addToCart()">Add To Cart</button>
-
+<app-header></app-header>
+<section class="main-wrap">
+  <div class="product">
+      <div class="image-gallery">
+          <img [src]="editbook.imageUrl" id="productImg" alt="">
+      </div>
+      <div class="product-details">
+          <div class="details">
+              <h2>{{editbook.title}}</h2>
+              <h3>{{editbook.author}}</h3>
+              <h4>{{editbook.price }}</h4>
+              <p>{{editbook.description}}</p>
+          </div>
+          <div class="sizes">
+              <form class="form">
+                  <div class="select-size">
+                      <h3>Tags:</h3>
+                      <label for="sm">
+                          <span class="tag">{{editbook.tags}}</span>
+                      </label>
+                  </div>   
+              </form>
+          </div>
+          <div class="colors">
+              <form class="form">
+                  <div class="select-color">
+                      <h3>Favourite:</h3>
+                      <label for="red">
+                          <span class="favorite {{editbook.favorite? '': 'not'}}">❤</span>
+                      </label>
+                  </div>   
+              </form>
+            </div>
+          <div class="sub-btn">
+              <button class="submit" (click)="addToCart()">Buy Now</button>
+          </div>
+      </div>
   </div>
-</div>
+</section>

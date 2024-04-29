@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
@@ -11,6 +11,7 @@ const USER_KEY = 'User';
   providedIn: 'root'
 })
 export class UserService {
+  userLoggedIn=new BehaviorSubject<boolean>(false);
   private userSubject =
   new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable:Observable<User>;
@@ -28,7 +29,8 @@ export class UserService {
         next: (user) =>{
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
-          this.toastrService.success('Welcome to BookStopper!','Success')
+          this.toastrService.success(`Welcome to BookStopper ${user.name}`,'Successful Login');
+          this.userLoggedIn.next(true);
             
         },
         error: (errorResponse) => {
@@ -61,6 +63,7 @@ register(userRegiser:IUserRegister): Observable<User>{
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
     window.location.reload();
+    this.userLoggedIn.next(false);
   }
 
   private setUserToLocalStorage(user:User){

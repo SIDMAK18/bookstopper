@@ -3,112 +3,101 @@
  [visible]="(!ficbooks || !ficbooks.length) && (!editorsbooks || !editorsbooks.length) && (!textbooks || !textbooks.length) && (!childrenbooks || !childrenbooks.length) && (!exambooks || !exambooks.length) && (!mythologicalbooks || !mythologicalbooks.length)"
 resetLinkText="Reset Search">
 </app-notfound>
-<section class="product" *ngIf="ficbooks && ficbooks.length">
+<div style="margin-top: 10px;margin-bottom: 40px;background-color: #f9f4ef;padding-top: 20px;padding-bottom: 20px;">
+   <ng-image-slider #nav
+     [images]="imageObject"
+     [infinite]="true"
+     [autoSlide]="1"
+     [imagePopup]="false"
+    [manageImageRatio]="true"
+    [autoSlide]="{ interval: 2, stopOnHover: false }"
+    [showArrow]="false"
+    [animationSpeed]="0.8"
+     [imageSize]="{width: '100%', height: '500px'}"
+     slideImage="1"></ng-image-slider>
+ </div>
     <h2 class="product-category">Fiction Books</h2>
-    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
-    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
-    <div class="product-container">
-<div class="product-card" *ngFor="let ficbook of ficbooks">
-    <div class="product-image">
-        <span class="discount-tag">17 % off</span>
-        <a [routerLink]="['/fiction',ficbook.id]"><img [src]="ficbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
-    </div>
-    <div class="product-info">
-        <h2 class="product-brand">{{ficbook.title}}</h2>
-        <p class="product-short-des">{{ficbook.description}}</p>
-        <span class="price">Rs 476</span><span class="actual-price">{{ficbook.price}}</span>
-    </div>
-</div>
-</div>
-</section>
-<section class="product" *ngIf="textbooks && textbooks.length">
-    <h2 class="product-category">Text Books</h2>
-    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
-    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
-    <div class="product-container">
-<div class="product-card" *ngFor="let textbook of textbooks">
-    <div class="product-image">
-        <span class="discount-tag">17 % off</span>
-        <a [routerLink]="['/text',textbook.id]"><img [src]="textbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
-    </div>
-    <div class="product-info">
-        <h2 class="product-brand">{{textbook.title}}</h2>
-        <p class="product-short-des">{{textbook.description}}</p>
-        <span class="price">Rs 476</span><span class="actual-price">{{textbook.price}}</span>
-    </div>
-</div>
-</div>
-</section>
-<section class="product" *ngIf="childrenbooks && childrenbooks.length">
-    <h2 class="product-category">Children Books</h2>
-    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
-    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
-    <div class="product-container">
-<div class="product-card" *ngFor="let childbook of childrenbooks">
-    <div class="product-image">
-        <span class="discount-tag">17 % off</span>
-        <a [routerLink]="['/child',childbook.id]"><img [src]="childbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
-    </div>
-    <div class="product-info">
-        <h2 class="product-brand">{{childbook.title}}</h2>
-        <p class="product-short-des">{{childbook.description}}</p>
-        <span class="price">Rs 476</span><span class="actual-price">{{childbook.price}}</span>
-    </div>
-</div>
-</div>
-</section>
-<section class="product" *ngIf="editorsbooks && editorsbooks.length">
-    <h2 class="product-category">Editor's Books</h2>
-    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
-    <button class="nxt-btn"><img src="assests/arrow.png" alt=""></button>
-    <div class="product-container">
-<div class="product-card" *ngFor="let editorbook of editorsbooks">
-    <div class="product-image">
-        <span class="discount-tag">17 % off</span>
-        <a [routerLink]="['/edit',editorbook.id]"><img [src]="editorbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
-    </div>
-    <div class="product-info">
-        <h2 class="product-brand">{{editorbook.title}}</h2>
-        <p class="product-short-des">{{editorbook.description}}</p>
-        <span class="price">Rs 476</span><span class="actual-price">{{editorbook.price}}</span>
-    </div>
-</div>
-</div>
-</section>
-<section class="product" *ngIf="exambooks && exambooks.length">
-    <h2 class="product-category">Exam Books</h2>
-    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
-    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
-    <div class="product-container">
-<div class="product-card" *ngFor="let exambook of exambooks">
-    <div class="product-image">
-        <span class="discount-tag">17 % off</span>
-        <a [routerLink]="['/exam',exambook.id]"><img [src]="exambook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
-    </div>
-    <div class="product-info">
-        <h2 class="product-brand">{{exambook.title}}</h2>
-        <p class="product-short-des">{{exambook.description}}</p>
-        <span class="price">Rs 476</span><span class="actual-price">{{exambook.price}}</span>
-    </div>
-</div>
-</div>
-</section>
-<section class="product" *ngIf="mythologicalbooks && mythologicalbooks.length">
-    <h2 class="product-category">Mythological Books</h2>
-    <button class="pre-btn"><img src="assets/arrow.png" alt=""></button>
-    <button class="nxt-btn"><img src="assets/arrow.png" alt=""></button>
-    <div class="product-container">
-<div class="product-card" *ngFor="let mythbook of mythologicalbooks">
-    <div class="product-image">
-        <span class="discount-tag">17 % off</span>
-        <a [routerLink]="['/mythological',mythbook.id]"><img [src]="mythbook.imageUrl" class="product-thumb" height="300px" width="250px" alt=""></a>
-    </div>
-    <div class="product-info">
-        <h2 class="product-brand">{{mythbook.title}}</h2>
-        <p class="product-short-des">{{mythbook.description}}</p>
-        <span class="price">Rs 476</span><span class="actual-price">{{mythbook.price}}</span>
-    </div>
-</div>
-</div>
-</section>
+    <div class="container" *ngIf="ficbooks && ficbooks.length">
+        <div class="card__container">
+           <article class="card__article" *ngFor="let ficbook of ficbooks">
+              <a [routerLink]="['/fiction',ficbook.id]" class="card__img"><img [src]="ficbook.imageUrl" alt="image" class="card__img"></a>
+
+              <div class="card__data">
+                  <h2 class="card__title">{{ficbook.title}}</h2>
+                 <span class="card__description">{{ficbook.price | currency}}</span>
+                 <a href="#" class="card__button">Read More</a>
+              </div>
+           </article>
+        </div>
+     </div>
+     <h2 class="product-category">Text Books</h2>
+     <div class="container" *ngIf="textbooks && textbooks.length">
+         <div class="card__container">
+            <article class="card__article" *ngFor="let textbook of textbooks">
+               <a [routerLink]="['/text',textbook.id]" class="card__img"><img [src]="textbook.imageUrl" alt="image" class="card__img"></a>
+ 
+               <div class="card__data">
+                   <h2 class="card__title">{{textbook.title}}</h2>
+                  <span class="card__description">{{textbook.price | currency}}</span>
+                  <a href="#" class="card__button">Read More</a>
+               </div>
+            </article>
+         </div>
+      </div>
+      <h2 class="product-category">Children Books</h2>
+      <div class="container" *ngIf="childrenbooks && childrenbooks.length">
+          <div class="card__container">
+             <article class="card__article" *ngFor="let childrenbook of childrenbooks">
+                <a [routerLink]="['/children',childrenbook.id]" class="card__img"><img [src]="childrenbook.imageUrl" alt="image" class="card__img"></a>
+  
+                <div class="card__data">
+                    <h2 class="card__title">{{childrenbook.title}}</h2>
+                   <span class="card__description">{{childrenbook.price | currency}}</span>
+                   <a href="#" class="card__button">Read More</a>
+                </div>
+             </article>
+          </div>
+       </div>
+       <h2 class="product-category">Editor's Choice Books</h2>
+       <div class="container" *ngIf="editorsbooks && editorsbooks.length">
+           <div class="card__container">
+              <article class="card__article" *ngFor="let editorsbook of editorsbooks">
+                 <a [routerLink]="['/editors',editorsbook.id]" class="card__img"><img [src]="editorsbook.imageUrl" alt="image" class="card__img"></a>
+   
+                 <div class="card__data">
+                     <h2 class="card__title">{{editorsbook.title}}</h2>
+                    <span class="card__description">{{editorsbook.price | currency}}</span>
+                    <a href="#" class="card__button">Read More</a>
+                 </div>
+              </article>
+           </div>
+        </div>
+        <h2 class="product-category">Exam Related Books</h2>
+        <div class="container" *ngIf="exambooks && exambooks.length">
+            <div class="card__container">
+               <article class="card__article" *ngFor="let exambook of exambooks">
+                  <a [routerLink]="['/exam',exambook.id]" class="card__img"><img [src]="exambook.imageUrl" alt="image" class="card__img"></a>
+    
+                  <div class="card__data">
+                      <h2 class="card__title">{{exambook.title}}</h2>
+                     <span class="card__description">{{exambook.price | currency}}</span>
+                     <a href="#" class="card__button">Read More</a>
+                  </div>
+               </article>
+            </div>
+         </div>
+         <h2 class="product-category">Mythological Books</h2>
+         <div class="container" *ngIf="mythologicalbooks && mythologicalbooks.length">
+             <div class="card__container">
+                <article class="card__article" *ngFor="let mythologicalbook of mythologicalbooks">
+                   <a [routerLink]="['/mythological',mythologicalbook.id]" class="card__img"><img [src]="mythologicalbook.imageUrl" alt="image" class="card__img"></a>
+     
+                   <div class="card__data">
+                       <h2 class="card__title">{{mythologicalbook.title}}</h2>
+                      <span class="card__description">{{mythologicalbook.price | currency}}</span>
+                      <a href="#" class="card__button">Read More</a>
+                   </div>
+                </article>
+             </div>
+          </div>
 

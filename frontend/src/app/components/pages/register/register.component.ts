@@ -10,13 +10,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { TextInputComponent } from "../../partials/text-input/text-input.component";
 import { DefaultButtonComponent } from "../../partials/default-button/default-button.component";
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from "../../partials/header/header.component";
 
 @Component({
     selector: 'app-register',
     standalone: true,
     templateUrl: './register.component.html',
     styleUrl: './register.component.css',
-    imports: [TitleComponent, ReactiveFormsModule, TextInputComponent, DefaultButtonComponent, RouterModule]
+    imports: [TitleComponent, ReactiveFormsModule, TextInputComponent, DefaultButtonComponent, RouterModule, HeaderComponent]
 })
 export class RegisterComponent {
   registerForm!:FormGroup;

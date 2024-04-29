@@ -8,7 +8,7 @@ import { Book } from '../shared/models/Book';
   providedIn: 'root'
 })
 export class CartService {
-  private cart:Cart=new Cart();
+  private cart:Cart=this.getCartFromLocalStorage();
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
   constructor() { }
 

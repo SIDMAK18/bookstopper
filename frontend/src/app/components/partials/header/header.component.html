@@ -1,27 +1,33 @@
 
 <header>
-  <div class="container">
-    <a routerLink="/" class="logo"><img src="assets/Screenshot 2024-03-26 110858-fotor-20240326151253-modified.png" height="30px"></a><span class="line"></span>
-    <app-search></app-search>
-    <nav>
-      <ul>
-        <li *ngIf="!isAuth" style="background-color: #5f3724;border-radius: 10px;margin-top: 8px;" >
-          <a routerLink="/login" style="color: #FFCC57; text-decoration: none;">Login</a>
+    <a routerLink="/" class="logo"><img src="assets/Screenshot 2024-04-28 234315.png"></a><span class="line"></span>
+    <div class="group">
+      <ul class="navigation">
+        <li *ngIf="!isAuth" >
+          <a routerLink="/login" >LOGIN</a>
         </li>
-        <li  class="menu-container" >
-          <a routerLink="/dashboard" style="text-decoration: none; color: #5f3724;padding-top: 15px;">{{user.name}}</a>
-          <div class="menu">
-            <a routerLink="/profile" style="background-color: #FFCC57;color: #5f3724;text-decoration: none;">Profile</a>
-            <a routerLink="/orders" style="background-color: #FFCC57;color: #5f3724;text-decoration: none;">Orders</a>
-            <a (click)="logout()" style="background-color: #FFCC57;color: #5f3724;">Logout</a>
+        <li  class="menu-container" [class.logged-in]="userLoggedIn">
+          <a routerLink="/dashboard" style="color:#fffffe;letter-spacing: 0em;" >{{user.name}}</a>
+          <div class="menu" [class.logged-in]="userLoggedIn">
+            <a routerLink="/profile" style="color: #fffffe;letter-spacing: 0em;">Profile</a>
+            <a routerLink="/orders" style="color: #fffffe;letter-spacing: 0em;">Orders</a>
+            <a (click)="logout()" style="color: #fffffe;letter-spacing: 0em;">Logout</a>
           </div>
         </li>
-        <li style="background-color: #5f3724;border-radius: 10px;margin-top: 8px;padding-left: 5px;padding-right: 5px;">
-          <a routerLink="/cart-page" style="color: #FFCC57; text-decoration: none;">
-            Cart <span *ngIf="cartquantity" style="background-color: #FFCC57;color: #5f3724;">  {{cartquantity}}</span>
+        <li>
+          <a routerLink="/cart">
+            CART <span *ngIf="cartquantity" >{{cartquantity}}</span>
           </a>
         </li>
       </ul>
-    </nav>
+      <div class="search">
+        <span class="icon">
+          <ion-icon name="search-outline" class="searchbtn" #searchbtn (click)="show()"></ion-icon>
+          <ion-icon name="close-outline" class="closebtn" #closebtn (click)="close()"></ion-icon>
+        </span>
+      </div>
+  </div>
+  <div class="searchbox" #searchbox>
+    <input #s type="text" placeholder="Type the book name here" (keyup.enter)="search(s.value)" [value]="searchTerm">
   </div>
 </header>

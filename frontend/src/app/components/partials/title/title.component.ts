@@ -10,6 +10,4 @@ import { Component, Input } from '@angular/core';
 })
 export class TitleComponent {
 @Input() title!: string;
-// @Input() margin?='1rem 0 1rem 5rem';
-@Input() fontSize?='2rem';
 }
